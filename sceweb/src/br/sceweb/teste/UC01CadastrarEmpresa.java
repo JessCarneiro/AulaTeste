@@ -3,6 +3,7 @@ package br.sceweb.teste;
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -16,20 +17,31 @@ public class UC01CadastrarEmpresa {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		empresa = new Empresa();
 		empresaDAO = new EmpresaDAO();
+		empresa = new Empresa();
+		empresa.setNomeDaEmpresa("empresa x");
+		empresa.setCnpj("89424232000180");
+		empresa.setNomeFantasia("empresa x");
+		empresa.setEndereco("rua taquari");
+		empresa.setTelefone("2222");
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		
-		
-	}
-	
-	/**
-	 * verificar o comportamento do sistema na inclusão de empresa com sucesso
-	 */
 
+
+	}
+	/**
+	 * estabelece as pre-condicoes antes da execucao de cada teste
+	 * @throws Exception
+	 */
+	@Before
+	public void excluiEmpresa() throws Exception{
+		empresaDAO.exclui("89424232000180");
+	}
+	/**
+	 * verifica o comportamento do sistema na inclusao de um cnpj valido
+	 */
 	@Test
 	public void CT01UC01FBCadastrarEmpresa_com_sucesso() { //Rastreável para o Negócio
 		
