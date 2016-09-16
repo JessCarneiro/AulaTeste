@@ -40,12 +40,31 @@ public class UC01CadastrarEmpresa {
 		empresaDAO.exclui("89424232000180");
 	}
 	/**
-	 * verifica o comportamento do sistema na inclusao de um cnpj valido
+	 * verifica o comportamento do sistema na inclusao de um cnpj já cadastrado
 	 */
 	@Test
 	public void CT01UC01FBCadastrarEmpresa_com_sucesso() { //Rastreável para o Negócio
 		
 		assertEquals(1, empresaDAO.adiciona(empresa));
+	}
+	/**
+	 * verifica o comportamento do sistema na inclusao de um cnpj não cadastrado
+	 */
+	@Test ( expected = RuntimeException.class )
+	public void CT02UC01FBCadastrarEmpresa_com_sucesso() { 
+		
+		empresaDAO.adiciona(empresa);
+		empresaDAO.adiciona(empresa);
+	}
+	
+	/**
+	 * verifica o comportamento do sistema na exclusao de um cnpj não cadastrado
+	 */
+	@Test //( expected = RuntimeException.class )
+	public void CT03UC01FBCadastrarEmpresa_com_sucesso() {
+		
+		empresaDAO.exclui("8942423200018");
+
 	}
 
 }
