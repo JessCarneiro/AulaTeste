@@ -28,8 +28,7 @@ public class UC01CadastrarEmpresa {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-
-
+		empresaDAO.exclui("8942423200018");
 	}
 	/**
 	 * estabelece as pre-condicoes antes da execucao de cada teste
