@@ -66,5 +66,15 @@ public class UC01CadastrarEmpresa {
 		empresaDAO.exclui("8942423200018");
 
 	}
+	
+	/**
+	 * Exclusao para um cnpj inválido
+	 */
+	@Test //( expected = RuntimeException.class )
+	public void CT04UC01FBCadastrarEmpresa_com_sucesso() {
+		
+		assertEquals(0, empresaDAO.exclui("1"));
+
+	}
 
 }
